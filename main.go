@@ -95,7 +95,7 @@ func findHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(items)
 }
 
-func retreiveHandler(w http.ResponseWriter, r *http.Request) {
+func retrieveHandler(w http.ResponseWriter, r *http.Request) {
 
 	items := AddressList{
 		Items: make([]Address, 0),
@@ -125,7 +125,7 @@ func retreiveHandler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/Capture/Interactive/Find/v1.00/json3ex.ws", findHandler)
-	http.HandleFunc("/Capture/Interactive/Retrieve/v1.00/json3ex.ws", retreiveHandler)
+	http.HandleFunc("/Capture/Interactive/Retrieve/v1.00/json3ex.ws", retrieveHandler)
 	err := http.ListenAndServeTLS(":8080", "server.pem", "server.key", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
