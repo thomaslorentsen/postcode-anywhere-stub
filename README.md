@@ -15,6 +15,7 @@ git clone git@github.com:thomaslorentsen/postcode-anywhere-stub.git
 ## Install SSl Keys
 Generate the SSL keys needed to run over https
 ```bash
+mkdir -p ~/go/bin/
 cd ~/go/bin/
 openssl genrsa -out server.key 2048
 openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
