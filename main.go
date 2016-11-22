@@ -159,7 +159,7 @@ func retrieveHandler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	http.HandleFunc("/Capture/Interactive/Find/v1.00/json3ex.ws", findHandler)
 	http.HandleFunc("/Capture/Interactive/Retrieve/v1.00/json3ex.ws", retrieveHandler)
-	err := http.ListenAndServeTLS(":8080", "server.pem", "server.key", nil)
+	err := http.ListenAndServeTLS(":9040", "server.pem", "server.key", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}

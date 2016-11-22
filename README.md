@@ -1,18 +1,36 @@
 # Postcode Anywhere Stub Server
-## Prerequisites
-### Install Go
+## Using with Docker
+### Prerequisites
+We need to generate the ssl keys locally
+```bash
+openssl genrsa -out server.key 2048
+openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
+```
+### Installing Docker Container
+Build the docker image
+```bash
+docker build -t postcode-anywhere-stub . 
+```
+Run the docker image
+```bash
+docker run -it --rm -p 127.0.0.1:9040:9040 --name postcode-anywhere-stub postcode-anywhere-stub  
+```
+Open in a browser ```https://localhost:9040/``` and add an exception for the ssl key.
+## Local Installation
+### Prerequisites
+#### Install Go
 ```bash
 brew install go
 export GOPATH=$HOME/go
 ```
-## Installation
+### Installation
 Clone the service into a new directory
 ```bash
 mkdir ~/go/src/github.com/thomaslorentsen/
 cd ~/go/src/github.com/thomaslorentsen/
 git clone git@github.com:thomaslorentsen/postcode-anywhere-stub.git
 ```
-## Install SSl Keys
+### Install SSl Keys
 Generate the SSL keys needed to run over https
 ```bash
 mkdir -p ~/go/bin/
@@ -20,12 +38,12 @@ cd ~/go/bin/
 openssl genrsa -out server.key 2048
 openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
 ```
-# Building
+## Building
 Compile the source
 ```bash
 go install github.com/thomaslorentsen/postcode-anywhere-stub
 ```
-## Running Server
+### Running Server
 Run the server located in the bin folder
 ```bash
 $GOPATH/bin/postcode-anywhere-stub
@@ -34,5 +52,5 @@ $GOPATH/bin/postcode-anywhere-stub
 Once Post Code Anywhere has been initiated, the host can be set to use the stub server.
 In the browser console run:
 ```javascript
-pca.host = 'localhost:8080'
+pca.host = 'localhost:9040'
 ```
