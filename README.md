@@ -3,12 +3,12 @@
 ### Install Go
 ```bash
 brew install go
-mkdir ~/go/src/github.com/thomaslorentsen/
 export GOPATH=$HOME/go
 ```
 ## Installation
 Clone the service into a new directory
 ```bash
+mkdir ~/go/src/github.com/thomaslorentsen/
 cd ~/go/src/github.com/thomaslorentsen/
 git clone git@github.com:thomaslorentsen/postcode-anywhere-stub.git
 ```
