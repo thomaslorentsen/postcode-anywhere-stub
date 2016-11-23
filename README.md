@@ -4,11 +4,11 @@
 ### Installing Docker Container
 Build the docker image
 ```bash
-docker build -t postcode-anywhere-stub . 
+docker build -t postcode-anywhere-stub .
 ```
 Run the docker image
 ```bash
-docker run -it --rm -p 127.0.0.1:9040:9040 --name postcode-anywhere-stub postcode-anywhere-stub  
+docker run -it --detach -p 127.0.0.1:9040:9040 --name postcode-anywhere-stub postcode-anywhere-stub
 ```
 Open in a browser ```https://localhost:9040/``` and add an exception for the ssl key.
 ## Local Installation
