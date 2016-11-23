@@ -1,11 +1,6 @@
 # Postcode Anywhere Stub Server
 ## Using with Docker
 ### Prerequisites
-We need to generate the ssl keys locally
-```bash
-openssl genrsa -out server.key 2048
-openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
-```
 ### Installing Docker Container
 Build the docker image
 ```bash
