@@ -1,4 +1,4 @@
-package main
+package postcode_anywhere_stub
 
 import (
 	"encoding/json"
