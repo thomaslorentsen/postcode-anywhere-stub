@@ -7,6 +7,8 @@ import (
 	"flag"
 )
 
+var port, cert, key string
+
 type AddressList struct {
 	Items []Address
 }
@@ -157,15 +159,17 @@ func retrieveHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(items)
 }
 
-func main() {
-	port := flag.String("port", "9040", "Port number to bind onto")
-	cert := flag.String("cert", "server.pem", "Server certificate")
-	key := flag.String("key", "server.key", "Server key")
+func init() {
+	flag.StringVar(&port, "port", "9040", "Port number to bind onto")
+	flag.StringVar(&cert, "cert", "server.pem", "Server certificate")
+	flag.StringVar(&key, "key", "server.key", "Server key")
 	flag.Parse()
+}
 
+func main() {
 	http.HandleFunc("/Capture/Interactive/Find/v1.00/json3ex.ws", findHandler)
 	http.HandleFunc("/Capture/Interactive/Retrieve/v1.00/json3ex.ws", retrieveHandler)
-	err := http.ListenAndServeTLS(":" + *port, *cert, *key, nil)
+	err := http.ListenAndServeTLS(":" + port, cert, key, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
