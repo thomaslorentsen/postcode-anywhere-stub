@@ -1,8 +1,11 @@
 # Postcode Anywhere Stub Server
+This provides a stub server for the post code anywhere api.
 ## Using with Docker
+The service can be run inside a docker container.
 ### Prerequisites
+You will need docker installed
 ### Installing Docker Container
-Build the docker image
+Build the docker image.
 ```bash
 docker build -t postcode-anywhere-stub .
 ```
@@ -33,7 +36,13 @@ cd ~/go/bin/
 openssl genrsa -out server.key 2048
 openssl req -new -x509 -sha256 -key server.key -out server.pem -days 3650
 ```
-## Building
+## Building with go get
+You can use go to fetch and compile the source for you with the following command:
+```bash
+go get github.com/thomaslorentsen/postcode-anywhere-stub
+```
+The server will then be installed
+## Building from source
 Compile the source
 ```bash
 go install github.com/thomaslorentsen/postcode-anywhere-stub
