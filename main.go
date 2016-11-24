@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"flag"
 )
 
 type AddressList struct {
@@ -157,9 +158,14 @@ func retrieveHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	port := flag.String("port", "9040", "Port number to bind onto")
+	cert := flag.String("cert", "server.pem", "Server certificate")
+	key := flag.String("key", "server.key", "Server key")
+	flag.Parse()
+
 	http.HandleFunc("/Capture/Interactive/Find/v1.00/json3ex.ws", findHandler)
 	http.HandleFunc("/Capture/Interactive/Retrieve/v1.00/json3ex.ws", retrieveHandler)
-	err := http.ListenAndServeTLS(":9040", "server.pem", "server.key", nil)
+	err := http.ListenAndServeTLS(":" + *port, *cert, *key, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}

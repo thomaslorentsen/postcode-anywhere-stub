@@ -49,3 +49,12 @@ In the browser console run:
 ```javascript
 pca.host = 'localhost:9040'
 ```
+## Flags
+The ssl certificate and key can be set with
+```bash
+./postcode-anywhere-stub  -cert server.pem -key server.key
+```
+The port that the server binds to can be set with
+```bash
+./postcode-anywhere-stub -port 9040
+```
